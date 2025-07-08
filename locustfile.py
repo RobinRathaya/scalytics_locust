@@ -1,5 +1,6 @@
 from locust import HttpUser, task, between
 import random
+import os
 from utility import get_config
 
 # Check environment variable first
