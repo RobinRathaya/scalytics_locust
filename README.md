@@ -43,3 +43,5 @@ locust -f locustfile.py
 ```
 
 
+# Ignore local config
+application-dev.properties

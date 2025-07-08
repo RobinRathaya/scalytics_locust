@@ -1,0 +1,2 @@
+# Core load testing framework
+locust==2.25.1
