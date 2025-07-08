@@ -17,4 +17,5 @@ COPY . .
 EXPOSE 8089
 
 # Default command to run Locust
-CMD ["locust", "-f", "locustfile.py", "--host", "http://13.60.37.78:8080", "--web-port", "8089"]
+ENV LOCUST_HOST http://localhost:9091
+CMD ["sh", "-c", "locust -f locustfile.py --host $LOCUST_HOST --web-port 8089"]
