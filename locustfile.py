@@ -2,11 +2,19 @@ from locust import HttpUser, task, between
 import random
 from utility import get_config
 
-locust_config = get_config("locust")
+# Check environment variable first
+locust_host = os.getenv("LOCUST_HOST")
+
+if not locust_host:
+    # fallback to config file
+    locust_config = get_config("locust")
+    locust_host = locust_config["host"]
+
+print(f"Using Locust host → {locust_host}")
 
 class DemoApiUser(HttpUser):
     wait_time = between(1, 3)
-    host = locust_config["host"]
+    host = locust_host
 
     @task
     def get_hello(self):
